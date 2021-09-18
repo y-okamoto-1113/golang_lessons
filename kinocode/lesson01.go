@@ -25,6 +25,9 @@ func main(){
 
 	// Integer
 	// https://blog.y-yuki.net/entry/2017/04/27/000000
+	fmt.Println("===================================================================")
+	fmt.Println("数値型について")
+	fmt.Println("===================================================================")
 	// int8 は 8bit なので、0~255までの値を取るが、これは -128 ~ 127 の値を取る。
 	// 1bit目は、プラス・マイナス符号になる。
 	// -128, +127を超えると「overflows int8」となる
@@ -73,5 +76,18 @@ func main(){
 	fmt.Println("========== float64について ==========")
 	var float64_num float64 = 1.12346789098321235678909412345678987654321234567
 	fmt.Println(float64_num)
+
+
+	// String
+	fmt.Println("===================================================================")
+	fmt.Println("文字列型について")
+	fmt.Println("===================================================================")
+	var string_a string = "Hello World from a!"
+	fmt.Println(string_a)
+	fmt.Println(reflect.TypeOf(string_a))
+	string_b := "Hello World from b!"
+	fmt.Println(string_b)
+	fmt.Println(reflect.TypeOf(string_b))
+
 }
 
