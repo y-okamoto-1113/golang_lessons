@@ -107,5 +107,21 @@ func main(){
 	fmt.Println(num_bool)
 	fmt.Println(reflect.TypeOf(num_bool))
 
+	// Array
+	fmt.Println("===================================================================")
+	fmt.Println("配列　について")
+	fmt.Println("===================================================================")
+	arr := [5]string{
+		"okamoto",
+		"kunisawa",
+		"seki",
+		"nishioka",
+		"tanaka",
+	}
+
+	for i := 0; i < len(arr); i++ {
+		fmt.Println(arr[i])
+	}
+
 }
 
