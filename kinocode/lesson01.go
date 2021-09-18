@@ -89,5 +89,23 @@ func main(){
 	fmt.Println(string_b)
 	fmt.Println(reflect.TypeOf(string_b))
 
+
+	// Boolean
+	fmt.Println("===================================================================")
+	fmt.Println("真偽値型について")
+	fmt.Println("===================================================================")
+	var true_1 bool = true
+	fmt.Println(true_1)
+	fmt.Println(reflect.TypeOf(true_1))
+	var false_1 bool = false
+	fmt.Println(false_1)
+	fmt.Println(reflect.TypeOf(false_1))
+
+	a := 1
+	b := 10
+	var num_bool bool = a > b
+	fmt.Println(num_bool)
+	fmt.Println(reflect.TypeOf(num_bool))
+
 }
 
