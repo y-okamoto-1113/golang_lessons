@@ -109,7 +109,7 @@ func main(){
 
 	// Array
 	fmt.Println("===================================================================")
-	fmt.Println("配列　について")
+	fmt.Println("配列 について")
 	fmt.Println("===================================================================")
 	arr := [5]string{
 		"okamoto",
@@ -121,6 +121,30 @@ func main(){
 
 	for i := 0; i < len(arr); i++ {
 		fmt.Println(arr[i])
+	}
+
+
+	// 条件分岐
+	fmt.Println("===================================================================")
+	fmt.Println("条件分岐 について")
+	fmt.Println("===================================================================")
+	age := 19
+	if age >= 20 {
+		fmt.Println("adult")
+	} else if age >= 6 {
+		fmt.Println("child")
+	} else {
+		fmt.Println("baby")
+	}
+
+	apple := 200
+	banana := 150
+	if sum := apple + banana; sum >= 400 {
+		fmt.Println("高過ぎぃぃぃ！！！")
+	} else if sum >= 200 {
+		fmt.Println("神の見えざる手 が働いていますね！")
+	} else {
+		fmt.Println("安過ぎぃぃぃ！！！！")
 	}
 
 }
