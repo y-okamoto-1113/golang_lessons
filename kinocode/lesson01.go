@@ -159,5 +159,44 @@ func main(){
 		fmt.Println(i)
 	}
 
+
+	// 関数
+	fmt.Println("===================================================================")
+	fmt.Println("関数作成 について")
+	fmt.Println("===================================================================")
+	sayHello("Good Morning with Interpolation")
+	cal1 := func(x, y, z int) (int, int, int, int){
+		addition := x + y + z
+		substraction := x - y - z
+		division := x / y / z
+		multiplication := x * y * z
+		return addition, substraction, division, multiplication
+	}
+	cal2 := func(x, y, z int) (addition, substraction, division, multiplication int){
+		addition = x + y + z
+		substraction = x - y - z
+		division = x / y / z
+		multiplication = x * y * z
+		return
+	}
+	fmt.Println( cal1(10,10,10) )
+	fmt.Println( cal2(10,10,10) )
+	func(greeting string){
+		fmt.Println(greeting)
+	}("Good Night!")
+
+	lesson1_cal := func(x, y int)(result int){
+		result = x + y
+		return
+	}
+	fmt.Println( lesson1_cal(10, 5) )
+
 }
+
+// 関数
+func sayHello(greeting string){
+	fmt.Println(greeting)
+}
+
+
 
