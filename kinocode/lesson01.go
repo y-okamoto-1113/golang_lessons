@@ -198,27 +198,32 @@ func main(){
 	s1.math = 70
 	s1.english = 100
 	fmt.Println(s1)
+	s1.avg() // メソッド
 
 	s2 := Student{"suzuki", 100, 100}
 	fmt.Println(s2)
+	s2.avg() // メソッド
 
 	s3 := Student{name: "sakamoto", math: 60, english: 50}
 	fmt.Println(s3)
+	s3.avg() // メソッド
 
 	var u1 User
 	u1.gender = "male"
 	u1.age = 20
 	fmt.Println(u1)
+	fmt.Println("u1のBMIは" , u1.bmi_cal(185, 100) ) // メソッド
 
 	u2 := User{gender: "female", age: 99}
 	fmt.Println(u2)
+	fmt.Println("u2のBMIは", u2.bmi_cal(181, 65) ) // メソッド
 
 
 
 }
 
 // 関数
-func sayHello(greeting string){
+func sayHello(greeting string) {
 	fmt.Println(greeting)
 }
 
@@ -231,4 +236,14 @@ type Student struct {
 type User struct {
 	gender string
 	age int
+}
+
+
+// メソッド
+func (s Student) avg() {
+	fmt.Println(s.name, "の平均点は", (s.math + s.english)/2 )
+}
+func (u User) bmi_cal(height, weight float64) (result float64) {
+	result = weight / height / height * 10000
+	return
 }
