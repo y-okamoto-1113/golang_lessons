@@ -191,6 +191,30 @@ func main(){
 	}
 	fmt.Println( lesson1_cal(10, 5) )
 
+
+	// 構造体
+	var s1 Student
+	s1.name = "okamoto"
+	s1.math = 70
+	s1.english = 100
+	fmt.Println(s1)
+
+	s2 := Student{"suzuki", 100, 100}
+	fmt.Println(s2)
+
+	s3 := Student{name: "sakamoto", math: 60, english: 50}
+	fmt.Println(s3)
+
+	var u1 User
+	u1.gender = "male"
+	u1.age = 20
+	fmt.Println(u1)
+
+	u2 := User{gender: "female", age: 99}
+	fmt.Println(u2)
+
+
+
 }
 
 // 関数
@@ -199,4 +223,12 @@ func sayHello(greeting string){
 }
 
 
-
+// 構造体
+type Student struct {
+	name string
+	math, english float64
+}
+type User struct {
+	gender string
+	age int
+}
