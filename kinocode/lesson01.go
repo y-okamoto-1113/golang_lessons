@@ -1,10 +1,11 @@
 package main
+
 import (
 	"fmt"
 	"reflect"
 )
 
-func main(){
+func main() {
 	fmt.Println("Good Morning!")
 	fmt.Println("Good Afternoon!")
 	fmt.Println("Good Evening!")
@@ -77,7 +78,6 @@ func main(){
 	var float64_num float64 = 1.12346789098321235678909412345678987654321234567
 	fmt.Println(float64_num)
 
-
 	// String
 	fmt.Println("===================================================================")
 	fmt.Println("文字列型について")
@@ -88,7 +88,6 @@ func main(){
 	string_b := "Hello World from b!"
 	fmt.Println(string_b)
 	fmt.Println(reflect.TypeOf(string_b))
-
 
 	// Boolean
 	fmt.Println("===================================================================")
@@ -123,7 +122,6 @@ func main(){
 		fmt.Println(arr[i])
 	}
 
-
 	// 条件分岐
 	fmt.Println("===================================================================")
 	fmt.Println("条件分岐 について")
@@ -147,50 +145,50 @@ func main(){
 		fmt.Println("安過ぎぃぃぃ！！！！")
 	}
 
-
-
 	// ループ処理
 	fmt.Println("===================================================================")
 	fmt.Println("ループ処理 について")
 	fmt.Println("===================================================================")
 	for i := 0; i < 12; i++ {
-		if i%4 == 0 { continue }
-		if i == 11 {break}
+		if i%4 == 0 {
+			continue
+		}
+		if i == 11 {
+			break
+		}
 		fmt.Println(i)
 	}
-
 
 	// 関数
 	fmt.Println("===================================================================")
 	fmt.Println("関数作成 について")
 	fmt.Println("===================================================================")
 	sayHello("Good Morning with Interpolation")
-	cal1 := func(x, y, z int) (int, int, int, int){
+	cal1 := func(x, y, z int) (int, int, int, int) {
 		addition := x + y + z
 		substraction := x - y - z
 		division := x / y / z
 		multiplication := x * y * z
 		return addition, substraction, division, multiplication
 	}
-	cal2 := func(x, y, z int) (addition, substraction, division, multiplication int){
+	cal2 := func(x, y, z int) (addition, substraction, division, multiplication int) {
 		addition = x + y + z
 		substraction = x - y - z
 		division = x / y / z
 		multiplication = x * y * z
 		return
 	}
-	fmt.Println( cal1(10,10,10) )
-	fmt.Println( cal2(10,10,10) )
-	func(greeting string){
+	fmt.Println(cal1(10, 10, 10))
+	fmt.Println(cal2(10, 10, 10))
+	func(greeting string) {
 		fmt.Println(greeting)
 	}("Good Night!")
 
-	lesson1_cal := func(x, y int)(result int){
+	lesson1_cal := func(x, y int) (result int) {
 		result = x + y
 		return
 	}
-	fmt.Println( lesson1_cal(10, 5) )
-
+	fmt.Println(lesson1_cal(10, 5))
 
 	// 構造体
 	var s1 Student
@@ -212,13 +210,11 @@ func main(){
 	u1.gender = "male"
 	u1.age = 20
 	fmt.Println(u1)
-	fmt.Println("u1のBMIは" , u1.bmi_cal(185, 100) ) // メソッド
+	fmt.Println("u1のBMIは", u1.bmi_cal(185, 100)) // メソッド
 
 	u2 := User{gender: "female", age: 99}
 	fmt.Println(u2)
-	fmt.Println("u2のBMIは", u2.bmi_cal(181, 65) ) // メソッド
-
-
+	fmt.Println("u2のBMIは", u2.bmi_cal(181, 65)) // メソッド
 
 }
 
@@ -227,21 +223,19 @@ func sayHello(greeting string) {
 	fmt.Println(greeting)
 }
 
-
 // 構造体
 type Student struct {
-	name string
+	name          string
 	math, english float64
 }
 type User struct {
 	gender string
-	age int
+	age    int
 }
-
 
 // メソッド
 func (s Student) avg() {
-	fmt.Println(s.name, "の平均点は", (s.math + s.english)/2 )
+	fmt.Println(s.name, "の平均点は", (s.math+s.english)/2)
 }
 func (u User) bmi_cal(height, weight float64) (result float64) {
 	result = weight / height / height * 10000
