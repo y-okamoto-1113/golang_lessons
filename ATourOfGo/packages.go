@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"math/cmplx"
 	"math/rand"
+	"reflect"
 	"time"
 )
 
@@ -56,5 +57,22 @@ func main() {
 	fmt.Printf("MaxUint変数と math.MaxUint64 は同じ値？ => %v\n", MaxUint == math.MaxUint64)
 	fmt.Printf("MaxInt変数と math.MaxInt64 は同じ値？   => %v\n", MaxInt == math.MaxInt64)
 	fmt.Println("\n==================================================================\n")
+
+	// コードポイントについて
+	// fmt.Printlnで出力される文字はUTF-8にエンコードされる。UTF-8はコードポイントを16進数表記なので、16真数に変換してUnicodeの頭文字をつける
+	fmt.Println("銀")
+	fmt.Println('銀') // コードポイントが10進数表記で出力される。
+
+	// コードポイントを整数として取得
+	var codepoint int = '銀' // 型がruneの場合 strconv.Itoa で変換できないので敢えて int にしている。
+	fmt.Printf("変数codepoint の型: %s \n", reflect.TypeOf(codepoint))
+	fmt.Printf("変数codepoint の値: %d \n", codepoint)
+
+	// 16進数に変換
+	var CodepointEncoded16Bit string = fmt.Sprintf("%x", codepoint) // 16進数にエンコードするので
+	fmt.Printf("変数 CodepointEncoded16Bit の型: %s \n", reflect.TypeOf(CodepointEncoded16Bit))
+	fmt.Printf("変数 CodepointEncoded16Bit の値: %s \n", CodepointEncoded16Bit)
+	fmt.Println("\u9280")
+	fmt.Println(string([]rune{0x9280}))
 
 }
