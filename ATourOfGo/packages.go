@@ -8,6 +8,7 @@ import (
 	"math/cmplx"
 	"math/rand"
 	"reflect"
+	"strconv"
 	"time"
 )
 
@@ -74,5 +75,29 @@ func main() {
 	fmt.Printf("変数 CodepointEncoded16Bit の値: %s \n", CodepointEncoded16Bit)
 	fmt.Println("\u9280")
 	fmt.Println(string([]rune{0x9280}))
+
+	// stringメソッドはstring型に型変換してくれるが、数値はコードポイントとして認識される。
+	fmt.Println(string("37504"))
+	fmt.Println(string("\u9280"))
+	fmt.Println("\n==================================================================\n")
+
+	// 型変換
+	i := 27515
+	fmt.Printf("変数iの型: %T \n", i)
+	fmt.Printf("変数iの値: %v \n", i)
+	f := float64(i)
+	fmt.Printf("変数fの型: %T \n", f)
+	fmt.Printf("変数fの値: %v \n", f)
+	u := uint(f)
+	fmt.Printf("変数uの型: %T \n", u)
+	fmt.Printf("変数uの値: %v \n", u)
+	// Integer を string に型変換すると、その数値はコードポイントとして認識されるので、strconv
+	s := strconv.Itoa(i)
+	fmt.Printf("変数sの型: %T \n", s)
+	fmt.Printf("変数sの値: %v \n", s)
+	s_codepoint := string(i)
+	fmt.Printf("変数s_codepointの型: %T \n", s_codepoint)
+	fmt.Printf("変数s_codepointの値: %v \n", s_codepoint)
+	fmt.Println("\n==================================================================\n")
 
 }
