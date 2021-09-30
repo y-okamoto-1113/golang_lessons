@@ -100,4 +100,18 @@ func main() {
 	fmt.Printf("変数s_codepointの値: %v \n", s_codepoint)
 	fmt.Println("\n==================================================================\n")
 
+	// slice
+	a := []int{10, 20}
+	b := append(a, 30)
+	a[0] = 100
+	c := append(b, 40)
+	b[1] = 999
+	d := append(c, 50)
+	c[3] = 200
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println(d) // キャパシティオーバーでポインタ値が変わるので、別オブジェクトになる。
+	fmt.Println("\n==================================================================\n")
+
 }
