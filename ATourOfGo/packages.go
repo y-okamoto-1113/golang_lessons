@@ -101,17 +101,27 @@ func main() {
 	fmt.Println("\n==================================================================\n")
 
 	// slice
-	a := []int{10, 20}
-	b := append(a, 30)
-	a[0] = 100
-	c := append(b, 40)
-	b[1] = 999
-	d := append(c, 50)
-	c[3] = 200
-	fmt.Println(a)
-	fmt.Println(b)
-	fmt.Println(c)
-	fmt.Println(d) // キャパシティオーバーでポインタ値が変わるので、別オブジェクトになる。
+	slice_a := []int{10, 20}
+	slice_b := append(slice_a, 30)
+	slice_a[0] = 100
+	slice_c := append(slice_b, 40)
+	slice_b[1] = 999
+	slice_d := append(slice_c, 50)
+	slice_c[3] = 200
+	fmt.Println(slice_a)
+	fmt.Println(slice_b)
+	fmt.Println(slice_c)
+	fmt.Println(slice_d) // キャパシティオーバーでポインタ値が変わるので、別オブジェクトになる。
+
+	// sliceデータはポインタの値も含む為、比較できない。
+	// slice_e := []int{10, 20, 30}
+	// slice_f := []int{10, 20, 30}
+	// slice_e == slice_f // これは
 	fmt.Println("\n==================================================================\n")
+
+	// array
+	ns := [...]int{10,20,30}
+	ms := [...]int{10,20,30}
+	fmt.Println(ns == ms)
 
 }
