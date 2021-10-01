@@ -156,4 +156,20 @@ func main() {
 	fmt.Println(zero / zero)
 	fmt.Println("\n==================================================================\n")
 
+	// iota
+	const (
+		const_a = iota
+		const_b
+		const_c
+		const_d = 10 + iota
+		const_e
+		const_f
+		const_g = 999
+		const_h
+		const_i
+		const_j = iota // iotaはconstブロック内で定数が定義されるたびに1ずつ増える。ここは10番目なので「9」になる。
+		const_k
+	)
+	fmt.Println(const_a, const_b, const_c, const_d, const_e, const_f, const_g, const_h, const_i, const_j, const_k)
+
 }
