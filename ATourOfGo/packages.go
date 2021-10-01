@@ -115,10 +115,10 @@ func main() {
 	fmt.Println(slice_c)
 	fmt.Println(slice_d) // キャパシティオーバーでポインタ値が変わるので、別オブジェクトになる。
 
-	// sliceデータはポインタの値も含む為、比較できない。
+	// sliceデータは、比較できない。ポインタの値も含む為。
 	// slice_e := []int{10, 20, 30}
 	// slice_f := []int{10, 20, 30}
-	// slice_e == slice_f // これは
+	// slice_e == slice_f
 	fmt.Println("\n==================================================================\n")
 
 	// array
@@ -179,5 +179,19 @@ func main() {
 		晩の挨拶 = "Good Evening!!!"
 	)
 	fmt.Println(朝の挨拶, 昼の挨拶, 晩の挨拶)
+	fmt.Println("\n==================================================================\n")
+
+	// slice の length と capacity
+	sl := []struct{ Age int }{
+		{Age: 10},
+		{Age: 20},
+		{Age: 30},
+		{Age: 40},
+		{Age: 50},
+	}
+	fmt.Println(sl)
+	fmt.Printf("len(sl) => %v\n", len(sl))
+	fmt.Printf("cap(sl) => %v\n", cap(sl))
+	fmt.Println("\n==================================================================\n")
 
 }
