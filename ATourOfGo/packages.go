@@ -221,4 +221,15 @@ func main() {
 	fmt.Println(sl2)
 	fmt.Println("\n==================================================================\n")
 
+	// スライスのキャパシティ指定。
+	var longArray [1_000_000]int
+	laSlice1 := longArray[:10]
+	fmt.Printf("len(laSlice1) => %v \n", len(laSlice1))
+	fmt.Printf("cap(laSlice1) => %v \n", cap(laSlice1))
+	// 配列からスライスを作成する際にキャパシティを指定しなければ、コピー元の配列と同じキャパシティになる。
+	laSlice2 := longArray[:10:11]
+	fmt.Printf("len(laSlice2) => %v \n", len(laSlice2))
+	fmt.Printf("cap(laSlice2) => %v \n", cap(laSlice2))
+	fmt.Println("\n==================================================================\n")
+
 }
