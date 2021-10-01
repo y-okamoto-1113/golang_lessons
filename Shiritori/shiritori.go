@@ -1,17 +1,19 @@
 package main
+
 import (
+	"bufio"
 	"fmt"
 	"os"
-	"bufio"
 )
-func main(){
+
+func main() {
 	fmt.Printf("GAME START\n")
 	firstWord := "り"
 	start(firstWord)
 
 }
 
-func start(word string){
+func start(word string) {
 	fmt.Printf("最初の文字は: %s\n", word)
 	text := input()
 	fmt.Printf("入力された文字は: %s", text)
@@ -19,14 +21,13 @@ func start(word string){
 }
 
 // 標準入力を受け取る
-func input() string{
+func input() string {
 	fmt.Printf("文字を入力してください\n")
 	stdin := bufio.NewScanner(os.Stdin)
 	stdin.Scan()
 	text := stdin.Text()
 	return text
 }
-
 
 func judge(text, word string) {
 	textRune := []rune(text)
@@ -39,7 +40,6 @@ func judge(text, word string) {
 		fmt.Printf("もう一度入力してください。")
 		start(word)
 	}
-
 
 	whiteList := []string{
 		"あ", "い", "う", "え", "お",
@@ -102,8 +102,7 @@ func judge(text, word string) {
 	start(lastWord)
 }
 
-
-func inArray(whiteList []string, word string) bool{
+func inArray(whiteList []string, word string) bool {
 	for _, value := range whiteList {
 		if word != value {
 			return false
@@ -112,9 +111,7 @@ func inArray(whiteList []string, word string) bool{
 	}
 }
 
-
-func end(){
+func end() {
 	fmt.Println("GAME OVER!!!")
 	os.Exit(0)
 }
-
