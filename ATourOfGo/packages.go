@@ -50,6 +50,8 @@ func main() {
 		MaxInt        int64      = 1<<63 - 1            // intはuintと異なり、±符号で1bit使用するので純粋に数値として扱える数値は63bitのみ。
 		ComplexNumber complex128 = cmplx.Sqrt(-5 + 12i) // 複素数
 	)
+	// 整数の最大値は以下でビット演算で定義されている。
+	// https://cs.opensource.google/go/go/+/refs/tags/go1.17.1:src/math/const.go;l=39
 	fmt.Printf("boolean変数のType: %T Value: %v\n", boolean, boolean)
 	fmt.Printf("MaxUint変数のType: %T Value: %v\n", MaxUint, MaxUint)
 	fmt.Printf("MaxInt変数のType:  %T Value: %v\n", MaxInt, MaxInt)
@@ -120,8 +122,29 @@ func main() {
 	fmt.Println("\n==================================================================\n")
 
 	// array
-	ns := [...]int{10,20,30}
-	ms := [...]int{10,20,30}
+	ns := [...]int{10, 20, 30}
+	ms := [...]int{10, 20, 30}
 	fmt.Println(ns == ms)
+	fmt.Println("\n==================================================================\n")
+
+	// オーバーフロー
+	// 数値リテラルはint型と推論される。uintは型推論されないので、使いたい場合は明記するしかない。
+	// res := math.MaxUint64   =>  正の整数リテラルは全てint型と推論される。
+	var res uint64 = math.MaxUint64
+	fmt.Println(res)
+	var uint_1 uint64 = math.MaxUint32
+	uint_2 := math.MaxUint32
+	uint_3 := uint64(uint_2)
+	fmt.Printf("変数uint_1の型: %T, 値: %d \n", uint_1, uint_1)
+	fmt.Printf("変数uint_2の型: %T, 値: %d \n", uint_2, uint_2)
+	fmt.Printf("変数uint_3の型: %T, 値: %d \n", uint_3, uint_3)
+	fmt.Println("\n==================================================================\n")
+
+	// ラップアラウンド
+	before := byte(255)
+	after := before + 1
+	fmt.Println(before) // 255は「0 1111 1111」なので、255と表現される。
+	fmt.Println(after)  // 256は「1 0000 0000」であり、byte型は8bitまでの値を見る。このような繰り上がりは無視されて8bitまでの値で計算が行われる。
+	fmt.Println("\n==================================================================\n")
 
 }
