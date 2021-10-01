@@ -172,4 +172,12 @@ func main() {
 	)
 	fmt.Println(const_a, const_b, const_c, const_d, const_e, const_f, const_g, const_h, const_i, const_j, const_k)
 
+	// 識別子の命名規則
+	const (
+		朝の挨拶 = "Good Morning!!!"
+		昼の挨拶 = "Good Afternoon!!!"
+		晩の挨拶 = "Good Evening!!!"
+	)
+	fmt.Println(朝の挨拶, 昼の挨拶, 晩の挨拶)
+
 }
