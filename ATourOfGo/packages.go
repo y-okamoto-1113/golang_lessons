@@ -194,4 +194,31 @@ func main() {
 	fmt.Printf("cap(sl) => %v\n", cap(sl))
 	fmt.Println("\n==================================================================\n")
 
+	// slice range
+	sl2 := []struct{ height float64 }{
+		{height: 180.0},
+		{height: 180.1},
+		{height: 180.2},
+		{height: 175.9},
+		{height: 168.5},
+	}
+	// range 〇〇 で〇〇の長さ0から最後までのインデックスを取得して、順番に実行する。
+	// rubyの each を実行したいときに 古典的なfor を書かなくても楽にできる。
+	for i := range sl2 {
+		fmt.Printf("sl2[%d] => %v \n", i, sl2[i].height)
+	}
+
+	// sl2の値を1個1個取得し、vという変数にコピーしてるから、sl2の値は更新されない。
+	for _, v := range sl2 {
+		v.height *= 10
+	}
+	fmt.Println(sl2)
+
+	// sl2 を直接参照しているので、値は更新される。
+	for i := range sl2 {
+		sl2[i].height *= 1000
+	}
+	fmt.Println(sl2)
+	fmt.Println("\n==================================================================\n")
+
 }
