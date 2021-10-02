@@ -3,10 +3,12 @@ package main
 import (
 	crand "crypto/rand"
 	"fmt"
+	"log"
 	"math"
 	"math/big"
 	"math/cmplx"
 	"math/rand"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
@@ -328,16 +330,50 @@ func main() {
 	var x interface{} = '忍'
 	switch x.(type) { // `.(type)` メソッドはswitchの簡易文としてしか使えない。
 	case bool:
-		fmt.Println("x.(type) is Boolean!!!")
+		fmt.Printf("x => %v, x.(type) is Boolean!!!\n", x)
 	case int:
-		fmt.Println("x.(type) is Integer!!!")
+		fmt.Printf("x => %v, x.(type) is Integer!!!\n", x)
 	case float64:
-		fmt.Println("x.(type) is Float!!!")
+		fmt.Printf("x => %v, x.(type) is Float!!!\n", x)
 	case string:
-		fmt.Println("x.(type) is String!!!")
+		fmt.Printf("x => %v, x.(type) is String!!!\n", x)
 	case rune:
-		fmt.Println("x.(type) is Rune!!!")
+		fmt.Printf("x => %v, x.(type) is Rune!!!\n", x)
 	default:
-		fmt.Println("x.(type) is Unsupported Value!!!!")
+		fmt.Printf("x => %v, x.(type) is Unsupported Value!!!!\n", x)
 	}
+	fmt.Println("\n==================================================================\n")
+
+	// goto文
+	gotoFunc := func() {
+		fmt.Println("A")
+		goto L
+		fmt.Println("B") // スキップされる。
+	L:
+		fmt.Println("C")
+	}
+	gotoFunc()
+	fmt.Println("\n==================================================================\n")
+
+	// defer
+	runDefer := func() {
+		fmt.Println(1)
+		defer fmt.Println(2)
+		defer fmt.Println(3)
+		defer fmt.Println(4)
+		fmt.Println(5)
+	}
+	runDefer()
+	fmt.Println("\n==================================================================\n")
+
+	// defer は処理完了後のリソース解放に使われる。
+	file, err := os.Open("./go.mod")
+	if err != nil {
+		log.Println("ファイルオープンに失敗！")
+	} else {
+		fmt.Println(file)
+		fmt.Println(reflect.TypeOf(file))
+	}
+	defer file.Close()
+	fmt.Println("\n==================================================================\n")
 }
