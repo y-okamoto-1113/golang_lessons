@@ -298,5 +298,17 @@ func main() {
 	for i := range nestedArray {
 		fmt.Println(nestedArray[i])
 	}
+	fmt.Println("\n==================================================================\n")
+
+	// interface{}型
+	anything := func(a interface{}) {
+		fmt.Printf("[value => %v], [type => %T]\n", a, a)
+	}
+	anything(999)
+	anything(3.14)
+	anything(4 + 5i)
+	anything('忍')
+	anything("忍者")
+	anything([]int{1, 2, 3, 4, 5})
 
 }
