@@ -232,4 +232,26 @@ func main() {
 	fmt.Printf("cap(laSlice2) => %v \n", cap(laSlice2))
 	fmt.Println("\n==================================================================\n")
 
+	// map
+	m := map[string]int{
+		"x": 1,
+		"y": 2,
+		"z": 3,
+	}
+	fmt.Println(m)
+	fmt.Println(m["x"])
+	// キーの存在チェック
+	map_z, ok := m["z"] // 存在すれば value と true が返る。
+	println(map_z, ok)
+	// キーの削除
+	delete(m, "z")
+	map_z, ok = m["z"] // 存在しなければ ゼロ値 と false が返る。
+	println(map_z, ok)
+	// キーの追加
+	m["z"] = 99
+	map_z, ok = m["z"]
+	println(map_z, ok)
+	fmt.Println(m)
+	fmt.Println("\n==================================================================\n")
+
 }
