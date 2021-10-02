@@ -9,6 +9,7 @@ import (
 	"math/rand"
 	"reflect"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -252,6 +253,32 @@ func main() {
 	map_z, ok = m["z"]
 	println(map_z, ok)
 	fmt.Println(m)
+	fmt.Println("\n==================================================================\n")
+
+	// Split でカウント
+	str := "dog dog dog cat dog rabbit cat rabbit"
+	split := strings.Split(str, " ")
+	fmt.Println(len(split))
+	fmt.Println(cap(split))
+	fmt.Printf("Type => %T \n", split)
+	fmt.Printf("Value => %v \n", split)
+	// 要素ごとのカウント
+	counts := map[string]int{}
+	for _, s := range strings.Split(str, " ") {
+		fmt.Println(s)
+		counts[s]++
+	}
+	fmt.Println(counts)
+	// mapを使って Boolean のゼロ値を活用
+	flags := map[string]bool{}
+	flags["dog"] = true
+	if flags["dog"] {
+		fmt.Println("dog OK!!!!")
+	}
+	// キャットの値は存在しないのでここで初めて宣言する。値が指定されていない場合は、ゼロ値で初期化される。boolean の場合は false
+	if flags["cat"] {
+		fmt.Println("cat OK!!!!")
+	}
 	fmt.Println("\n==================================================================\n")
 
 }
