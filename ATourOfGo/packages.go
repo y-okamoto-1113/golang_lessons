@@ -324,4 +324,20 @@ func main() {
 	fmt.Printf("r, isRune => %v, %v\n", r, isRune)
 	fmt.Println("\n==================================================================\n")
 
+	// interface{} switch
+	var x interface{} = '忍'
+	switch x.(type) { // `.(type)` メソッドはswitchの簡易文としてしか使えない。
+	case bool:
+		fmt.Println("x.(type) is Boolean!!!")
+	case int:
+		fmt.Println("x.(type) is Integer!!!")
+	case float64:
+		fmt.Println("x.(type) is Float!!!")
+	case string:
+		fmt.Println("x.(type) is String!!!")
+	case rune:
+		fmt.Println("x.(type) is Rune!!!")
+	default:
+		fmt.Println("x.(type) is Unsupported Value!!!!")
+	}
 }
