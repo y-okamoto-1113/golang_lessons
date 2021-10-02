@@ -310,5 +310,18 @@ func main() {
 	anything('忍')
 	anything("忍者")
 	anything([]int{1, 2, 3, 4, 5})
+	fmt.Println("\n==================================================================\n")
+
+	// interface{}型の型変換
+	var randVal interface{} = 3.14
+	i, isInt := randVal.(int) // int64などは指定できない。
+	f, isFloat := randVal.(float64)
+	s, isString := randVal.(string)
+	r, isRune := randVal.(rune)
+	fmt.Printf("i, isInt => %v, %v\n", i, isInt)
+	fmt.Printf("f, isFloat => %v, %v\n", f, isFloat)
+	fmt.Printf("s, isString => %v, %v\n", s, isString)
+	fmt.Printf("r, isRune => %v, %v\n", r, isRune)
+	fmt.Println("\n==================================================================\n")
 
 }
