@@ -376,4 +376,28 @@ func main() {
 	}
 	defer file.Close()
 	fmt.Println("\n==================================================================\n")
+
+	// timeパッケージ
+	wd := time.Now().Weekday()
+	fmt.Println("変数wdの値 => ", wd)
+	fmt.Println("変数wdの型 => ", reflect.TypeOf(wd))
+	fmt.Println(wd + 1) // 明日の曜日を出力
+	saturday := time.Saturday
+	fmt.Println(saturday)
+	fmt.Println("\n==================================================================\n")
+
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday()
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today.")
+	case today + 1:
+		fmt.Println("Tomorrow.")
+	case today + 2:
+		fmt.Println("In two days.")
+	default:
+		fmt.Println("Too far away.")
+	}
+	fmt.Println("\n==================================================================\n")
+
 }
