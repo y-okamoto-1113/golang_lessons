@@ -10,6 +10,7 @@ import (
 	"math/rand"
 	"os"
 	"reflect"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -419,5 +420,14 @@ func main() {
 	fmt.Println(fuga.N) // 省略できる
 	fmt.Println("\n==================================================================\n")
 	// 埋め込んでるだけで継承ではない
+
+	// ゴルーチン, runtimeパッケージ
+	go fmt.Println("GoRoutine1")
+	go fmt.Println("GoRoutine2")
+	go fmt.Println("GoRoutine3")
+	fmt.Println("NumCPU =>", runtime.NumCPU())
+	fmt.Println("NumGoroutine =>", runtime.NumGoroutine())
+	fmt.Println("Version =>", runtime.Version())
+	fmt.Println("\n==================================================================\n")
 
 }
