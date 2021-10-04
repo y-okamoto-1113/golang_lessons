@@ -400,4 +400,15 @@ func main() {
 	}
 	fmt.Println("\n==================================================================\n")
 
+	// ポインター
+	number := 42
+	pointer := &number // 実値から見たポインタの値
+	fmt.Println("number => ", number)
+	fmt.Println("pointer => ", pointer)
+	fmt.Println("reflect.TypeOf(pointer) =>", reflect.TypeOf(pointer))
+	fmt.Println("*pointer => ", *pointer) // ポインターから見た実値の値。ポインタに登録されてる実値を返す。
+	*pointer = 999                        // ポインターに登録されている実値を更新する。
+	fmt.Println("*pointer = 999;  number =>", number)
+	fmt.Println("\n==================================================================\n")
+
 }
