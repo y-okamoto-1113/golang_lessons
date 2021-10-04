@@ -411,4 +411,13 @@ func main() {
 	fmt.Println("*pointer = 999;  number =>", number)
 	fmt.Println("\n==================================================================\n")
 
+	// ネスとしたstruct
+	type Hoge struct{ N int }
+	type Fuga struct{ Hoge }
+	fuga := Fuga{Hoge{N: 100}}
+	fmt.Println(fuga.Hoge.N)
+	fmt.Println(fuga.N) // 省略できる
+	fmt.Println("\n==================================================================\n")
+	// 埋め込んでるだけで継承ではない
+
 }
