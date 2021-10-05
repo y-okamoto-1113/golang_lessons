@@ -430,4 +430,22 @@ func main() {
 	fmt.Println("Version =>", runtime.Version())
 	fmt.Println("\n==================================================================\n")
 
+	// function in a function. 関数の引数に関数を使う方法
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	compute := func(fn func(float64, float64) float64) float64 {
+		// function を引数に取る。
+		// function は float64 の引数を2つ取り、返り値は float64
+		// 引数で受け取った function を fn という変数に代入。つまり、この関数スコープ内では fn という変数名で参照できる。
+		//この compte function の戻り値も float64
+		return fn(3, 4)
+	}
+	fmt.Println(hypot(5, 12))
+	fmt.Println(hypot) // 関数を登録したメモリのアドレス（ポインタ値）
+	fmt.Println(compute) // 関数を登録したメモリのアドレス（ポインタ値）
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+	fmt.Println("\n==================================================================\n")
+
 }
