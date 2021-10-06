@@ -198,6 +198,24 @@ func main() {
 	fmt.Printf("cap(sl) => %v\n", cap(sl))
 	fmt.Println("\n==================================================================\n")
 
+	// slice capacity
+	s0 := make([]int, 0, 0)
+	fmt.Println("s0 => ", s0)
+	fmt.Printf("len(s0) => %d, cap(s0) => %d\n", len(s0), cap(s0))
+	s0 = append(s0, 1)
+	fmt.Println("s0 => ", s0)
+	fmt.Printf("len(s0) => %d, cap(s0) => %d\n", len(s0), cap(s0))
+	s0 = append(s0, []int{2, 3, 4}...) // sliceに別のsliceをappendするには`...`を使う。
+	fmt.Println("s0 => ", s0)
+	fmt.Printf("len(s0) => %d, cap(s0) => %d\n", len(s0), cap(s0))
+	s0 = append(s0, 5)
+	fmt.Println("s0 => ", s0)
+	fmt.Printf("len(s0) => %d, cap(s0) => %d\n", len(s0), cap(s0))
+	s0 = append(s0, 6, 7, 8, 9)
+	fmt.Println("s0 => ", s0)
+	fmt.Printf("len(s0) => %d, cap(s0) => %d\n", len(s0), cap(s0))
+	fmt.Println("\n==================================================================\n")
+
 	// slice range
 	sl2 := []struct{ height float64 }{
 		{height: 180.0},
@@ -442,10 +460,28 @@ func main() {
 		return fn(3, 4)
 	}
 	fmt.Println(hypot(5, 12))
-	fmt.Println(hypot) // 関数を登録したメモリのアドレス（ポインタ値）
+	fmt.Println(hypot)   // 関数を登録したメモリのアドレス（ポインタ値）
 	fmt.Println(compute) // 関数を登録したメモリのアドレス（ポインタ値）
 	fmt.Println(compute(hypot))
 	fmt.Println(compute(math.Pow))
+	fmt.Println("\n==================================================================\n")
+
+	// copy
+	s1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	s2 := []int{66, 77, 88, 99}
+	copied_num := copy(s1, s2) // コピーした要素数を返す。s1はコピーしてそのまま上書きされる。
+	fmt.Println("copied_num =>", copied_num)
+	fmt.Println("s1 =>", s1)
+	fmt.Println("s2 =>", s2)
+	fmt.Println("\n==================================================================\n")
+
+	s3 := make([]int, 1, 3)
+	fmt.Println("s3 =>", s3)
+	s4 := []int{11, 22, 33, 44, 55, 66, 77, 88, 99}
+	cNum := copy(s3, s4) // 最大でコピー元の要素数までコピーされる。
+	fmt.Println("cNum =>", cNum)
+	fmt.Println("s3 =>", s3)
+	fmt.Println("s4 =>", s4)
 	fmt.Println("\n==================================================================\n")
 
 }
