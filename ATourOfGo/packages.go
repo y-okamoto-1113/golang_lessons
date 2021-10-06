@@ -484,4 +484,20 @@ func main() {
 	fmt.Println("s4 =>", s4)
 	fmt.Println("\n==================================================================\n")
 
+	// 完全スライス式（Full slice expressions）
+	array1 := []int{1,2,3,4,5,6,7,8,9,10}
+	slice1 := array1[2:4]
+	fmt.Println("len(slice1) =>", len(slice1))
+	fmt.Println("cap(slice1) =>", cap(slice1))
+	fmt.Println("===================")
+
+	slice2 := array1[2:4:5] // 2から4までの要素を取得し。2から5までの分の長さを容量（capacity）とする
+	fmt.Println("len(slice2) =>", len(slice2))
+	fmt.Println("cap(slice2) =>", cap(slice2))
+	fmt.Println("===================")
+
+	slice3 := array1[2:4:7] // 2から4までの要素を取得し。2から7までの分の長さを容量（capacity）とする
+	fmt.Println("len(slice3) =>", len(slice3))
+	fmt.Println("cap(slice3) =>", cap(slice3))
+	fmt.Println("===================")
 }
