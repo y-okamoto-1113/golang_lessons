@@ -485,7 +485,7 @@ func main() {
 	fmt.Println("\n==================================================================\n")
 
 	// 完全スライス式（Full slice expressions）
-	array1 := []int{1,2,3,4,5,6,7,8,9,10}
+	array1 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	slice1 := array1[2:4]
 	fmt.Println("len(slice1) =>", len(slice1))
 	fmt.Println("cap(slice1) =>", cap(slice1))
@@ -499,5 +499,25 @@ func main() {
 	slice3 := array1[2:4:7] // 2から4までの要素を取得し。2から7までの分の長さを容量（capacity）とする
 	fmt.Println("len(slice3) =>", len(slice3))
 	fmt.Println("cap(slice3) =>", cap(slice3))
+	fmt.Println("\n==================================================================\n")
+
+	// sliceと可変長引数
+	sum := func(s ...int) int {
+		fmt.Println("受け取った引数「s ...int」 =>", s)
+		fmt.Println("reflect.TypeOf(s) =>", reflect.TypeOf(s))
+		var n int
+		for _, v := range s {
+			n += v
+		}
+		return n
+	}
+	fmt.Println(sum(1, 2, 3))
 	fmt.Println("===================")
+	fmt.Println(sum(1, 2, 3, 4, 5, 6, 7, 8, 9))
+	fmt.Println("===================")
+	fmt.Println(sum())
+	fmt.Println("===================")
+	random_s := []int{10, 33, 74, 18, 89, 66, 27}
+	fmt.Println(sum(random_s...)) // 「スライス...」とすることで、スライスを可変長引数として扱ってくれる。配列は無理！
+	fmt.Println("\n==================================================================\n")
 }
