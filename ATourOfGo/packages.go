@@ -520,4 +520,34 @@ func main() {
 	random_s := []int{10, 33, 74, 18, 89, 66, 27}
 	fmt.Println(sum(random_s...)) // 「スライス...」とすることで、スライスを可変長引数として扱ってくれる。配列は無理！
 	fmt.Println("\n==================================================================\n")
+
+	// `call by value` and `call by reference`
+	// 配列は `call by value` によって値がコピーされる。つまり、main関数内の変数arr と pow関数内の変数arr は別々のメモリ領域に格納されている。
+	pow := func(arr [3]int) {
+		for i, v := range arr {
+			arr[i] = v * v
+		}
+		fmt.Println("pow関数内のarr =>", arr)
+		return
+	}
+	arr := [3]int{1, 2, 3}
+	pow(arr)
+	fmt.Println(arr)
+	fmt.Println("main関数内のarr =>", arr)
+	fmt.Println("\n==================================================================\n")
+
+	// スライスは `call by reference` によってポインタ（メモリのアドレス）がコピーされる。つまり、main関数内の変数arr2 と pow関数内の変数arr2 は同一のメモリ領域に格納されている。
+	pow2 := func(arr2 []int) {
+		for i, v := range arr2 {
+			arr2[i] = v * v
+		}
+		fmt.Println("pow2関数内のarr2 =>", arr2)
+		return
+	}
+	arr2 := []int{1, 2, 3}
+	pow2(arr2)
+	fmt.Println(arr2)
+	fmt.Println("main関数内のarr2 =>", arr2)
+	fmt.Println("\n==================================================================\n")
+
 }
