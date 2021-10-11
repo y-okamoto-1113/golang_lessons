@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 
@@ -147,4 +148,38 @@ func main() {
 	fmt.Println("t.Method1() =>", t.Method1())
 	// t.field2 // これは非公開フィールドなのでコンパイルエラー
 	// t.method2 // これは非公開メソッドなのでコンパイルエラー
+	fmt.Println("\n==================================================================\n")
+
+	// タグ
+	type User struct {
+		Id   uint   "ユーザーID"
+		Name string "名前"
+		Age  uint   "年齢"
+	}
+	u := User{Id: 1, Name: "Kato", Age: 39}
+	fmt.Println("u =>", u)
+	fmt.Println("\n==================================================================\n")
+
+	tt := reflect.TypeOf(u)
+	fmt.Println("tt =>", tt)
+	fmt.Println("tt.NumField() =>", tt.NumField())
+	for i := 0; i < tt.NumField(); i++ {
+		f := tt.Field(i)
+		fmt.Println(f.Name, f.Tag)
+	}
+	fmt.Println("\n==================================================================\n")
+
+	type Staff struct {
+		Id       uint   `json: "staff_id"`
+		Name     string `json: "staff_name"`
+		Age      uint   `json: "staff_age"`
+		Position string `json: "staff_position"`
+	}
+	staff := Staff{Id: 77, Name: "John", Age: 21, Position: "CTO"}
+	fmt.Println("staff =>", staff)
+	bs, _ := json.Marshal(staff)
+	fmt.Println("reflect.TypeOf(bs) =>", reflect.TypeOf(bs))
+	fmt.Println("string(bs) =>", string(bs))
+	fmt.Println("\n==================================================================\n")
+
 }
