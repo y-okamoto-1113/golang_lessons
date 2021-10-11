@@ -97,5 +97,31 @@ func main() {
 	fmt.Println(b.Owner)
 	fmt.Println("\n==================================================================\n")
 
+	// 構造体とポインタ
+	ap := &a
+	fmt.Println("a =>", a)
+	fmt.Println("ap =>", ap)
+	fmt.Println("*ap =>", *ap)
+	fmt.Println("\n==================================================================\n")
+	(*ap).Name = "Jiro" // 演算子の優先順位の関係で、デリファレンスの部分は`()`で囲む。
+	fmt.Println("a =>", a)
+	fmt.Println("ap =>", ap)
+	fmt.Println("*ap =>", *ap)
+	fmt.Println("\n==================================================================\n")
+	// わざわざ`*`を使ってデリファレンスしなくても更新できる
+	ap.Name = "Suzuki Ichiro"
+	fmt.Println("a =>", a)
+	fmt.Println("ap =>", ap)
+	fmt.Println("*ap =>", *ap)
+	fmt.Println("\n==================================================================\n")
+
+	p := Point{x: 7, y: 9}
+	swap := func(p *Point) {
+		p.x = p.x * 100
+		p.y = p.y * 100
+	}
+	swap(&p)
+	fmt.Println(p)
+	fmt.Println("\n==================================================================\n")
 
 }
