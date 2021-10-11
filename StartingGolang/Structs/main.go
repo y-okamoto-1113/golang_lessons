@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"reflect"
+
+	"golang_lessons/StartingGolang/Structs/foo"
 )
 
 type Point struct {
@@ -134,4 +136,15 @@ func main() {
 	pp := &Point{x: 5, y: 12}
 	pp.Render()
 	fmt.Println("\n==================================================================\n")
+
+	// 構造体の公開・非公開
+	t := &foo.T{Field1: 999}
+	fmt.Println("t =>", t)
+	fmt.Println("*t =>", *t)
+	t.Field1 = 1234567
+	fmt.Println("t.Field1 =>", t.Field1)
+	(*t).Field1 = 98765
+	fmt.Println("t.Method1() =>", t.Method1())
+	// t.field2 // これは非公開フィールドなのでコンパイルエラー
+	// t.method2 // これは非公開メソッドなのでコンパイルエラー
 }
