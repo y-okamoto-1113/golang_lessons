@@ -5,6 +5,15 @@ import (
 	"reflect"
 )
 
+type Point struct {
+	x, y int
+}
+
+// メソッド定義
+func (p *Point) Render() {
+	fmt.Printf("<%d, %d>\n", p.x, p.y)
+}
+
 func main() {
 	// 複数の方を一気に定義している。
 	type (
@@ -33,9 +42,6 @@ func main() {
 	fmt.Println("\n==================================================================\n")
 
 	// struct
-	type Point struct {
-		x, y int
-	}
 	aaa := Point{x: 1, y: 2}
 	fmt.Println(aaa)
 	fmt.Println(aaa.x)
@@ -124,4 +130,8 @@ func main() {
 	fmt.Println(p)
 	fmt.Println("\n==================================================================\n")
 
+	// メソッド使用
+	pp := &Point{x: 5, y: 12}
+	pp.Render()
+	fmt.Println("\n==================================================================\n")
 }
