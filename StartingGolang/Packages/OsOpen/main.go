@@ -21,6 +21,7 @@ func main() {
 	fmt.Println("buff 222=>", buff)
 	fmt.Println("count =>", count)
 	fmt.Println("err =>", err)
+	fmt.Println("buff[:count]=>", buff[:count])
 	if err != nil {
 		log.Fatal(err)
 	}
