@@ -550,4 +550,15 @@ func main() {
 	fmt.Println("main関数内のarr2 =>", arr2)
 	fmt.Println("\n==================================================================\n")
 
+	// byte && string
+	byteA := []byte{72,73,74,75}
+	fmt.Println("byteA =>", byteA)
+	fmt.Println("string(byteA) =>", string(byteA))
+
+	byteB := []byte("Hello, World!!!")
+	fmt.Println("byteB =>", byteB)
+	fmt.Println("string(byteB) =>", string(byteB))
+
+	fmt.Println("\n==================================================================\n")
+
 }
