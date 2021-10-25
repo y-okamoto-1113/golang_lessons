@@ -14,14 +14,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("\n==================================================================\n")
 
 	buff := make([]byte, 1024)
 	fmt.Println("buff 111=>", buff)
 	count, err := file.Read(buff) // byte型の変数を定義して、そこにデータを突っ込んでる。byte型で定義した capacity 以上は代入できない。 countは文字数を返す。
+	fmt.Println("\n==================================================================\n")
 	fmt.Println("buff 222=>", buff)
+	fmt.Println("\n==================================================================\n")
 	fmt.Println("count =>", count)
 	fmt.Println("err =>", err)
 	fmt.Println("buff[:count]=>", buff[:count])
+	fmt.Println("\n==================================================================\n")
 	if err != nil {
 		log.Fatal(err)
 	}
