@@ -7,6 +7,7 @@ import (
 
 func main() {
 	f, err := os.Open("test.txt")
+	defer f.Close()
 	f.WriteString("test")
 	fmt.Println("f =>", f)
 	fmt.Println("err =>", err)

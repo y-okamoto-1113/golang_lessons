@@ -8,6 +8,7 @@ import (
 
 func main() {
 	f, err := os.Open("test.txt")
+	defer f.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
