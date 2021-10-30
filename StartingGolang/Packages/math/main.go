@@ -47,9 +47,9 @@ func main() {
 	fmt.Println("\n==================================================================\n")
 
 	// 累乗（Power）
-	fmt.Println("math.Pow(0, 10) =>", math.Pow(0, 10))  // 0の10乗
+	fmt.Println("math.Pow(0, 10) =>", math.Pow(0, 10))   // 0の10乗
 	fmt.Println("math.Pow(1, 100) =>", math.Pow(1, 100)) // 1の100乗
-	fmt.Println("math.Pow(2, 8) =>", math.Pow(2, 8))   // 2の8乗
+	fmt.Println("math.Pow(2, 8) =>", math.Pow(2, 8))     // 2の8乗
 	fmt.Println("\n==================================================================\n")
 
 	// 絶対値（0からの距離なのでマイナスもプラスも関係ない）
